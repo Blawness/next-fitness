@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { Calendar, MessageCircle, Users, Award, Dumbbell, Clock } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function Hero() {
     const stats = [
@@ -23,7 +26,7 @@ export default function Hero() {
                     className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/70 to-[#0F172A]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
             </div>
 
             {/* Content */}
@@ -34,12 +37,11 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-full mb-8"
                     >
-                        <span className="w-2 h-2 bg-[#3B82F6] rounded-full animate-pulse" />
-                        <span className="text-[#60A5FA] text-sm font-medium">
+                        <Badge variant="outline" className="mb-8 text-primary border-primary/30 bg-primary/10 px-4 py-2">
+                            <span className="w-2 h-2 bg-primary rounded-full animate-pulse mr-2" />
                             Kemang, Jakarta Selatan
-                        </span>
+                        </Badge>
                     </motion.div>
 
                     {/* Heading */}
@@ -47,7 +49,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
                     >
                         Transform Your Body with{" "}
                         <span className="gradient-text">Private Training</span>
@@ -58,7 +60,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl"
+                        className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl"
                     >
                         Latihan eksklusif dengan trainer profesional bersertifikat.
                         Program dipersonalisasi untuk hasil maksimal sesuai tujuan Anda.
@@ -71,22 +73,31 @@ export default function Hero() {
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="flex flex-col sm:flex-row gap-4"
                     >
-                        <a
-                            href="/jadwal"
-                            className="btn-primary inline-flex items-center justify-center gap-2 text-base"
+                        <Button
+                            asChild
+                            size="lg"
+                            className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 text-base"
                         >
-                            <Calendar size={20} />
-                            Lihat Jadwal Kelas
-                        </a>
-                        <a
-                            href="https://wa.me/6281234567890"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-secondary inline-flex items-center justify-center gap-2 text-base"
+                            <a href="/jadwal">
+                                <Calendar className="size-5" />
+                                Lihat Jadwal Kelas
+                            </a>
+                        </Button>
+                        <Button
+                            asChild
+                            variant="outline"
+                            size="lg"
+                            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground text-base"
                         >
-                            <MessageCircle size={20} />
-                            Konsultasi Gratis
-                        </a>
+                            <a
+                                href="https://wa.me/6281234567890"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <MessageCircle className="size-5" />
+                                Konsultasi Gratis
+                            </a>
+                        </Button>
                     </motion.div>
                 </div>
 
@@ -100,20 +111,22 @@ export default function Hero() {
                     {stats.map((stat, idx) => {
                         const Icon = stat.icon;
                         return (
-                            <div
+                            <Card
                                 key={idx}
-                                className="bg-[#1E293B]/60 backdrop-blur-sm border border-[#3B82F6]/10 rounded-2xl p-6 text-center"
+                                className="bg-card/60 backdrop-blur-sm border-border"
                             >
-                                <div className="flex justify-center mb-3">
-                                    <div className="w-12 h-12 rounded-xl bg-[#3B82F6]/10 flex items-center justify-center">
-                                        <Icon size={24} className="text-[#3B82F6]" />
+                                <CardContent className="p-6 text-center">
+                                    <div className="flex justify-center mb-3">
+                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                                            <Icon className="size-6 text-primary" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="text-3xl font-bold text-white mb-1">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-[#94A3B8]">{stat.label}</div>
-                            </div>
+                                    <div className="text-3xl font-bold text-foreground mb-1">
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                                </CardContent>
+                            </Card>
                         );
                     })}
                 </motion.div>
@@ -125,11 +138,11 @@ export default function Hero() {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >
-                <div className="w-6 h-10 border-2 border-[#3B82F6]/30 rounded-full flex justify-center pt-2">
+                <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center pt-2">
                     <motion.div
                         animate={{ y: [0, 12, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full"
+                        className="w-1.5 h-1.5 bg-primary rounded-full"
                     />
                 </div>
             </motion.div>

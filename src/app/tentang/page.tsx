@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Award, Users, Target, Heart } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function TentangPage() {
     const trainers = [
@@ -60,7 +62,7 @@ export default function TentangPage() {
     ];
 
     return (
-        <main className="pt-20">
+        <main className="pt-20 dark">
             {/* Hero Section */}
             <section className="relative py-24 overflow-hidden">
                 <div className="absolute inset-0">
@@ -70,7 +72,7 @@ export default function TentangPage() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/90 via-[#0F172A]/80 to-[#0F172A]" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background" />
                 </div>
 
                 <div className="relative max-w-4xl mx-auto px-6 text-center">
@@ -78,10 +80,10 @@ export default function TentangPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                             Tentang <span className="gradient-text">Fitness Elite</span>
                         </h1>
-                        <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+                        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
                             Private class eksklusif untuk mencapai fitness goals Anda dengan bimbingan trainer profesional
                         </p>
                     </motion.div>
@@ -89,7 +91,7 @@ export default function TentangPage() {
             </section>
 
             {/* Story Section */}
-            <section className="py-24 bg-[#0F172A]">
+            <section className="py-24 bg-background">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
                         <motion.div
@@ -97,13 +99,13 @@ export default function TentangPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                         >
-                            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-full text-[#60A5FA] text-sm font-medium mb-6">
+                            <Badge variant="outline" className="mb-6 text-primary border-primary/30 bg-primary/10">
                                 Cerita Kami
-                            </span>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                            </Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                                 Personal Training yang <span className="gradient-text">Berbeda</span>
                             </h2>
-                            <div className="space-y-4 text-[#94A3B8] leading-relaxed">
+                            <div className="space-y-4 text-muted-foreground leading-relaxed">
                                 <p>
                                     Fitness Elite didirikan dengan misi untuk memberikan pengalaman fitness yang personal dan eksklusif. Kami percaya bahwa setiap orang memiliki tujuan dan kemampuan yang berbeda.
                                 </p>
@@ -139,7 +141,7 @@ export default function TentangPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                             Nilai <span className="gradient-text">Kami</span>
                         </h2>
                     </motion.div>
@@ -154,17 +156,20 @@ export default function TentangPage() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: idx * 0.1 }}
-                                    className="bg-[#1E293B] rounded-2xl p-6 border border-[#3B82F6]/10 text-center"
                                 >
-                                    <div className="w-14 h-14 rounded-xl bg-[#3B82F6]/10 flex items-center justify-center mx-auto mb-4">
-                                        <Icon size={28} className="text-[#3B82F6]" />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white mb-2">
-                                        {value.title}
-                                    </h3>
-                                    <p className="text-[#94A3B8] text-sm">
-                                        {value.desc}
-                                    </p>
+                                    <Card className="bg-card border-border text-center h-full">
+                                        <CardContent className="p-6">
+                                            <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                                                <Icon className="size-7 text-primary" />
+                                            </div>
+                                            <h3 className="text-lg font-bold text-foreground mb-2">
+                                                {value.title}
+                                            </h3>
+                                            <p className="text-muted-foreground text-sm">
+                                                {value.desc}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
                                 </motion.div>
                             );
                         })}
@@ -173,7 +178,7 @@ export default function TentangPage() {
             </section>
 
             {/* Team */}
-            <section className="py-24 bg-[#0F172A]">
+            <section className="py-24 bg-background">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -181,10 +186,10 @@ export default function TentangPage() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#3B82F6]/10 border border-[#3B82F6]/20 rounded-full text-[#60A5FA] text-sm font-medium mb-6">
+                        <Badge variant="outline" className="mb-6 text-primary border-primary/30 bg-primary/10">
                             Tim Kami
-                        </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        </Badge>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                             Trainer <span className="gradient-text">Profesional</span>
                         </h2>
                     </motion.div>
@@ -197,28 +202,29 @@ export default function TentangPage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: idx * 0.1 }}
-                                className="group bg-[#1E293B] rounded-2xl overflow-hidden border border-[#3B82F6]/10 hover:border-[#3B82F6]/30 transition-all"
                             >
-                                <div className="relative h-56 overflow-hidden">
-                                    <Image
-                                        src={trainer.image}
-                                        alt={trainer.name}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-lg font-bold text-white mb-1">
-                                        {trainer.name}
-                                    </h3>
-                                    <p className="text-[#3B82F6] text-sm mb-3">
-                                        {trainer.specialty}
-                                    </p>
-                                    <div className="text-[#94A3B8] text-sm space-y-1">
-                                        <p>📅 {trainer.experience}</p>
-                                        <p>🏆 {trainer.certification}</p>
+                                <Card className="group bg-card overflow-hidden border-border hover:border-primary/30 transition-all h-full">
+                                    <div className="relative h-56 overflow-hidden">
+                                        <Image
+                                            src={trainer.image}
+                                            alt={trainer.name}
+                                            fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                        />
                                     </div>
-                                </div>
+                                    <CardContent className="p-6">
+                                        <h3 className="text-lg font-bold text-foreground mb-1">
+                                            {trainer.name}
+                                        </h3>
+                                        <p className="text-primary text-sm mb-3">
+                                            {trainer.specialty}
+                                        </p>
+                                        <div className="text-muted-foreground text-sm space-y-1">
+                                            <p>📅 {trainer.experience}</p>
+                                            <p>🏆 {trainer.certification}</p>
+                                        </div>
+                                    </CardContent>
+                                </Card>
                             </motion.div>
                         ))}
                     </div>

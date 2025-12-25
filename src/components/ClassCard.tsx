@@ -5,6 +5,9 @@ import { useState } from "react";
 import { ClassType } from "@/data/classes";
 import { Clock, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface ClassCardProps {
     classData: ClassType;
@@ -25,19 +28,13 @@ const classImages: Record<string, string> = {
 export default function ClassCard({ classData }: ClassCardProps) {
     const intensityConfig = {
         Low: {
-            bg: "bg-emerald-500/10",
-            text: "text-emerald-400",
-            border: "border-emerald-500/20"
+            className: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
         },
         Medium: {
-            bg: "bg-amber-500/10",
-            text: "text-amber-400",
-            border: "border-amber-500/20"
+            className: "bg-amber-500/20 text-amber-400 border-amber-500/30"
         },
         High: {
-            bg: "bg-rose-500/10",
-            text: "text-rose-400",
-            border: "border-rose-500/20"
+            className: "bg-rose-500/20 text-rose-400 border-rose-500/30"
         }
     };
 
@@ -56,64 +53,71 @@ export default function ClassCard({ classData }: ClassCardProps) {
             viewport={{ once: true }}
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3 }}
-            className="group bg-[#1E293B] rounded-2xl overflow-hidden border border-[#3B82F6]/10 hover:border-[#3B82F6]/30 transition-all"
         >
-            {/* Image */}
-            <div className="relative h-48 overflow-hidden">
-                <Image
-                    src={imageSrc}
-                    alt={classData.nama}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    onError={handleImageError}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E293B] to-transparent" />
+            <Card className="group bg-card overflow-hidden border-border hover:border-primary/30 transition-all h-full">
+                {/* Image */}
+                <div className="relative h-48 overflow-hidden">
+                    <Image
+                        src={imageSrc}
+                        alt={classData.nama}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={handleImageError}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
 
-                {/* Intensity Badge */}
-                <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${config.bg} ${config.text} border ${config.border}`}>
-                        {classData.intensitas}
-                    </span>
-                </div>
-            </div>
-
-            {/* Content */}
-            <div className="p-6">
-                {/* Header */}
-                <div className="mb-4">
-                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#3B82F6] transition-colors">
-                        {classData.nama}
-                    </h3>
-                    <div className="flex items-center gap-2 text-[#94A3B8] text-sm">
-                        <Clock size={14} />
-                        <span>{classData.durasi}</span>
+                    {/* Intensity Badge */}
+                    <div className="absolute top-4 right-4">
+                        <Badge
+                            variant="outline"
+                            className={config.className}
+                        >
+                            {classData.intensitas}
+                        </Badge>
                     </div>
                 </div>
 
-                {/* Description */}
-                <p className="text-[#94A3B8] text-sm leading-relaxed mb-4">
-                    {classData.deskripsi}
-                </p>
-
-                {/* Benefits */}
-                <div className="space-y-2 mb-6">
-                    {classData.manfaat.slice(0, 3).map((manfaat, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]" />
-                            <span className="text-[#94A3B8] text-sm">{manfaat}</span>
+                {/* Content */}
+                <CardContent className="p-6">
+                    {/* Header */}
+                    <div className="mb-4">
+                        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                            {classData.nama}
+                        </h3>
+                        <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                            <Clock className="size-3.5" />
+                            <span>{classData.durasi}</span>
                         </div>
-                    ))}
-                </div>
+                    </div>
 
-                {/* CTA */}
-                <a
-                    href="/jadwal"
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl bg-[#3B82F6]/10 text-[#3B82F6] font-semibold hover:bg-[#3B82F6] hover:text-white transition-all"
-                >
-                    Lihat Jadwal
-                    <ArrowRight size={16} />
-                </a>
-            </div>
+                    {/* Description */}
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                        {classData.deskripsi}
+                    </p>
+
+                    {/* Benefits */}
+                    <div className="space-y-2 mb-6">
+                        {classData.manfaat.slice(0, 3).map((manfaat, idx) => (
+                            <div key={idx} className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                <span className="text-muted-foreground text-sm">{manfaat}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* CTA */}
+                    <Button
+                        asChild
+                        variant="outline"
+                        className="w-full border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
+                    >
+                        <a href="/jadwal">
+                            Lihat Jadwal
+                            <ArrowRight className="size-4" />
+                        </a>
+                    </Button>
+                </CardContent>
+            </Card>
         </motion.div>
     );
 }

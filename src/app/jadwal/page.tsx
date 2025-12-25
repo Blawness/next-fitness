@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Schedule from "@/components/Schedule";
+import { Badge } from "@/components/ui/badge";
+import { Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Jadwal Kelas - Fitness Elite",
@@ -8,14 +10,18 @@ export const metadata: Metadata = {
 
 export default function JadwalPage() {
     return (
-        <main className="pt-20">
-            {/* Header */}
-            <div className="py-16 bg-[#0F172A]">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Jadwal <span className="bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] bg-clip-text text-transparent">Kelas</span>
+        <main className="pt-20 dark">
+            {/* Header - Simplified */}
+            <div className="py-12 bg-background border-b border-border">
+                <div className="max-w-5xl mx-auto px-4 lg:px-6 text-center">
+                    <Badge variant="outline" className="mb-4 text-primary border-primary/30 bg-primary/10">
+                        <Calendar className="size-3" />
+                        Jadwal Terbaru
+                    </Badge>
+                    <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+                        Jadwal <span className="gradient-text">Kelas</span>
                     </h1>
-                    <p className="text-[#94A3B8] text-lg max-w-2xl mx-auto">
+                    <p className="text-muted-foreground text-base max-w-xl mx-auto">
                         Pilih waktu yang paling sesuai dengan jadwal Anda
                     </p>
                 </div>
