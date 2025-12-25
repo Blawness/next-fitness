@@ -66,7 +66,7 @@ Website landing page untuk **Next Fitness** - pusat kebugaran eksklusif yang men
 
 1. **Clone repository:**
 ```bash
-git clone <repository-url>
+git clone https://github.com/Blawness/next-fitness
 cd next-fitness
 ```
 
@@ -208,12 +208,12 @@ Tidak ada environment variables yang diperlukan untuk production build.
 
 ## 📝 Lisensi
 
-Proyek ini bersifat private dan tidak untuk distribusi publik.
+Proyek ini bersifat private untuk memenuhi UAS mata kuliah SEO dan tidak untuk distribusi publik.
 
 ## 📞 Kontak
 
 **Next Fitness**
-- Website: [next-fitness.vercel.app](https://next-fitness.vercel.app)
+- Website: (https://blawness.github.io/next-fitness/)
 - WhatsApp: [+62 812-3456-7890](https://wa.me/6281234567890)
 - Email: info@nextfitness.id
 - Lokasi: Kemang, Jakarta Selatan
