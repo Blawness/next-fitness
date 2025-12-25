@@ -1,141 +1,135 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Calendar, MessageCircle, Users, Award, Dumbbell, Clock } from "lucide-react";
+import Image from "next/image";
 
 export default function Hero() {
+    const stats = [
+        { value: "4+", label: "Trainer Pro", icon: Award },
+        { value: "8+", label: "Jenis Kelas", icon: Dumbbell },
+        { value: "100+", label: "Member Aktif", icon: Users },
+        { value: "7", label: "Hari/Minggu", icon: Clock }
+    ];
+
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0f0f0f] to-[#0a0a0a]" />
-
-            {/* Animated Background Elements */}
-            <motion.div
-                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-20 right-20 w-[500px] h-[500px] bg-gradient-to-br from-[#00ff87]/20 to-transparent rounded-full blur-3xl"
-            />
-            <motion.div
-                animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-20 left-20 w-[400px] h-[400px] bg-gradient-to-br from-[#00d4ff]/20 to-transparent rounded-full blur-3xl"
-            />
-
-            {/* Grid Pattern */}
-            <div className="absolute inset-0 opacity-[0.02]" style={{
-                backgroundImage: `linear-gradient(to right, #ffffff 1px, transparent 1px),
-                         linear-gradient(to bottom, #ffffff 1px, transparent 1px)`,
-                backgroundSize: '80px 80px'
-            }} />
+        <section className="relative min-h-screen flex items-center overflow-hidden">
+            {/* Background Image */}
+            <div className="absolute inset-0">
+                <Image
+                    src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80"
+                    alt="Fitness gym"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/70 to-[#0F172A]" />
+            </div>
 
             {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-16">
-                <div className="text-center">
-                    {/* Location Badge */}
+            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
+                <div className="max-w-3xl">
+                    {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#141414]/80 backdrop-blur-sm border border-[#00ff87]/30 rounded-full mb-8"
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-[#3B82F6]/10 border border-[#3B82F6]/30 rounded-full mb-8"
                     >
-                        <span className="w-2 h-2 bg-[#00ff87] rounded-full animate-pulse" />
-                        <span className="text-[#00ff87] text-sm font-semibold">
+                        <span className="w-2 h-2 bg-[#3B82F6] rounded-full animate-pulse" />
+                        <span className="text-[#60A5FA] text-sm font-medium">
                             Kemang, Jakarta Selatan
                         </span>
                     </motion.div>
 
-                    {/* Main Heading */}
+                    {/* Heading */}
                     <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[1.1] tracking-tight"
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
                     >
-                        <span className="gradient-text">FITNESS ELITE</span>
-                        <br />
-                        <span className="text-white">Private Class</span>
+                        Transform Your Body with{" "}
+                        <span className="gradient-text">Private Training</span>
                     </motion.h1>
 
                     {/* Subtitle */}
                     <motion.p
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed"
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl"
                     >
-                        Latihan eksklusif dengan <span className="text-[#00ff87] font-semibold">trainer profesional</span> untuk
-                        mencapai hasil maksimal. Program dipersonalisasi sesuai tujuan Anda.
+                        Latihan eksklusif dengan trainer profesional bersertifikat.
+                        Program dipersonalisasi untuk hasil maksimal sesuai tujuan Anda.
                     </motion.p>
 
                     {/* CTA Buttons */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="flex flex-col sm:flex-row gap-4"
                     >
-                        <motion.a
+                        <a
                             href="/jadwal"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="btn-primary text-lg px-10 py-5 inline-flex items-center gap-3"
+                            className="btn-primary inline-flex items-center justify-center gap-2 text-base"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
+                            <Calendar size={20} />
                             Lihat Jadwal Kelas
-                        </motion.a>
-                        <motion.a
+                        </a>
+                        <a
                             href="https://wa.me/6281234567890"
                             target="_blank"
                             rel="noopener noreferrer"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="btn-secondary text-lg px-10 py-5 inline-flex items-center gap-3"
+                            className="btn-secondary inline-flex items-center justify-center gap-2 text-base"
                         >
+                            <MessageCircle size={20} />
                             Konsultasi Gratis
-                        </motion.a>
-                    </motion.div>
-
-                    {/* Stats */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
-                    >
-                        {[
-                            { value: "4+", label: "Trainer Profesional", icon: "👨‍🏫" },
-                            { value: "8+", label: "Jenis Kelas", icon: "🏋️" },
-                            { value: "100+", label: "Member Aktif", icon: "💪" },
-                            { value: "7", label: "Hari / Minggu", icon: "📅" }
-                        ].map((stat, idx) => (
-                            <motion.div
-                                key={idx}
-                                whileHover={{ y: -4 }}
-                                className="card-glass rounded-2xl p-6 text-center"
-                            >
-                                <div className="text-3xl mb-2">{stat.icon}</div>
-                                <div className="text-3xl md:text-4xl font-black gradient-text mb-1">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-gray-400">{stat.label}</div>
-                            </motion.div>
-                        ))}
+                        </a>
                     </motion.div>
                 </div>
+
+                {/* Stats */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4"
+                >
+                    {stats.map((stat, idx) => {
+                        const Icon = stat.icon;
+                        return (
+                            <div
+                                key={idx}
+                                className="bg-[#1E293B]/60 backdrop-blur-sm border border-[#3B82F6]/10 rounded-2xl p-6 text-center"
+                            >
+                                <div className="flex justify-center mb-3">
+                                    <div className="w-12 h-12 rounded-xl bg-[#3B82F6]/10 flex items-center justify-center">
+                                        <Icon size={24} className="text-[#3B82F6]" />
+                                    </div>
+                                </div>
+                                <div className="text-3xl font-bold text-white mb-1">
+                                    {stat.value}
+                                </div>
+                                <div className="text-sm text-[#94A3B8]">{stat.label}</div>
+                            </div>
+                        );
+                    })}
+                </motion.div>
             </div>
 
             {/* Scroll Indicator */}
             <motion.div
-                animate={{ y: [0, 10, 0] }}
+                animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >
-                <div className="w-7 h-12 border-2 border-[#00ff87]/50 rounded-full flex justify-center p-2">
+                <div className="w-6 h-10 border-2 border-[#3B82F6]/30 rounded-full flex justify-center pt-2">
                     <motion.div
-                        animate={{ y: [0, 16, 0] }}
+                        animate={{ y: [0, 12, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-[#00ff87] rounded-full"
+                        className="w-1.5 h-1.5 bg-[#3B82F6] rounded-full"
                     />
                 </div>
             </motion.div>
