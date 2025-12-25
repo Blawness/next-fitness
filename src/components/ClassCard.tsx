@@ -16,8 +16,8 @@ interface ClassCardProps {
 // Map class types to Unsplash images
 const classImages: Record<string, string> = {
     "personal-training": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80",
-    "hiit": "https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=600&q=80",
-    "strength-training": "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=600&q=80",
+    "hiit": "https://images.unsplash.com/photo-1599058917212-d750089bc07e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aGlpdHxlbnwwfHwwfHx8MA%3D%3D",
+    "strength-training": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "functional-training": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
     "cardio-burn": "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=600&q=80",
     "core-abs": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80",
@@ -45,6 +45,14 @@ export default function ClassCard({ classData }: ClassCardProps) {
     // Local image source state to support runtime fallback
     const [imageSrc, setImageSrc] = useState<string>(imageUrl);
     const handleImageError = () => setImageSrc(placeholderImage);
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const element = document.getElementById("jadwal");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <motion.div
@@ -111,7 +119,7 @@ export default function ClassCard({ classData }: ClassCardProps) {
                         variant="outline"
                         className="w-full border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
                     >
-                        <a href="/jadwal">
+                        <a href="#jadwal" onClick={handleNavClick}>
                             Lihat Jadwal
                             <ArrowRight className="size-4" />
                         </a>

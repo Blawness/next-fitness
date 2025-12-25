@@ -1,11 +1,19 @@
 "use client";
 
-import Link from "next/link";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        const targetId = href.replace("#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <footer className="bg-[#020617] border-t border-border">
@@ -13,14 +21,14 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
                     <div className="lg:col-span-1">
-                        <Link href="/" className="flex items-center gap-3 mb-4">
+                        <a href="#beranda" onClick={(e) => handleNavClick(e, "#beranda")} className="flex items-center gap-3 mb-4">
                             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center">
-                                <span className="text-white font-bold text-lg">FE</span>
+                                <span className="text-white font-bold text-lg">NF</span>
                             </div>
                             <span className="text-xl font-bold text-foreground">
-                                Fitness<span className="text-primary">Elite</span>
+                                Next<span className="text-primary">Fitness</span>
                             </span>
-                        </Link>
+                        </a>
                         <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                             Private class eksklusif di Kemang, Jakarta Selatan untuk mencapai fitness goals Anda.
                         </p>
@@ -50,18 +58,20 @@ export default function Footer() {
                         <h4 className="text-foreground font-semibold mb-4">Menu</h4>
                         <ul className="space-y-3">
                             {[
-                                { label: "Beranda", href: "/" },
-                                { label: "Jadwal Kelas", href: "/jadwal" },
-                                { label: "Tentang Kami", href: "/tentang" },
-                                { label: "Kontak", href: "/kontak" }
+                                { label: "Beranda", href: "#beranda" },
+                                { label: "Kelas", href: "#kelas" },
+                                { label: "Jadwal", href: "#jadwal" },
+                                { label: "Tentang Kami", href: "#tentang" },
+                                { label: "Kontak", href: "#kontak" }
                             ].map((link) => (
                                 <li key={link.href}>
-                                    <Link
+                                    <a
                                         href={link.href}
+                                        onClick={(e) => handleNavClick(e, link.href)}
                                         className="text-muted-foreground hover:text-primary transition-colors text-sm"
                                     >
                                         {link.label}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -127,7 +137,7 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className="border-t border-border pt-8 text-center">
                     <p className="text-muted-foreground text-sm">
-                        © {currentYear} Fitness Elite. All rights reserved.
+                        © {currentYear} Next Fitness. All rights reserved.
                     </p>
                 </div>
             </div>

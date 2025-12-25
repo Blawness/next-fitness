@@ -5,7 +5,7 @@ import { scheduleData } from "@/data/schedule";
 import { Clock, User, MessageCircle, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Schedule() {
@@ -17,14 +17,14 @@ export default function Schedule() {
     };
 
     return (
-        <section className="py-16 bg-background dark">
-            <div className="max-w-5xl mx-auto px-4 lg:px-6">
+        <section id="jadwal" className="py-16 sm:py-20 lg:py-24 bg-background dark">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-10"
+                    className="text-center mb-10 sm:mb-12 lg:mb-16"
                 >
                     <Badge variant="outline" className="mb-4 text-primary border-primary/30 bg-primary/10">
                         <Calendar className="size-3" />

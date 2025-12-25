@@ -15,6 +15,10 @@
   --color-dark-card: #1E293B;
   --color-dark-hover: #334155;
 
+  /* Fonts */
+  --font-inter: var(--font-inter);
+  --font-outfit: var(--font-outfit);
+
   /* Text Colors */
   --color-text-primary: #F1F5F9;
   --color-text-muted: #94A3B8;
@@ -33,14 +37,9 @@
   src: url('https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2') format('woff2');
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -347,8 +346,13 @@ a {
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   body {

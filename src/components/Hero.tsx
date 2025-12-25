@@ -16,9 +16,9 @@ export default function Hero() {
     ];
 
     return (
-        <section className="relative min-h-screen flex items-center overflow-hidden">
+        <section id="beranda" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
             {/* Background Image */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 w-full">
                 <Image
                     src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80"
                     alt="Fitness gym"
@@ -30,15 +30,16 @@ export default function Hero() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32">
-                <div className="max-w-3xl">
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16 sm:py-20 lg:py-24">
+                <div className="w-full max-w-4xl mx-auto text-center">
                     {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
+                        className="flex justify-center"
                     >
-                        <Badge variant="outline" className="mb-8 text-primary border-primary/30 bg-primary/10 px-4 py-2">
+                        <Badge variant="outline" className="mb-6 sm:mb-10 text-primary border-primary/30 bg-primary/10 px-4 py-2">
                             <span className="w-2 h-2 bg-primary rounded-full animate-pulse mr-2" />
                             Kemang, Jakarta Selatan
                         </Badge>
@@ -49,7 +50,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 sm:mb-10 text-foreground"
                     >
                         Transform Your Body with{" "}
                         <span className="gradient-text">Private Training</span>
@@ -60,7 +61,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl"
+                        className="text-base sm:text-lg md:text-xl text-muted-foreground mb-10 sm:mb-14 max-w-3xl mx-auto leading-relaxed"
                     >
                         Latihan eksklusif dengan trainer profesional bersertifikat.
                         Program dipersonalisasi untuk hasil maksimal sesuai tujuan Anda.
@@ -71,7 +72,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
-                        className="flex flex-col sm:flex-row gap-4"
+                        className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center"
                     >
                         <Button
                             asChild
@@ -106,7 +107,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
-                    className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4"
+                    className="mt-14 sm:mt-20 lg:mt-24 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 w-full max-w-4xl mx-auto"
                 >
                     {stats.map((stat, idx) => {
                         const Icon = stat.icon;
@@ -136,7 +137,7 @@ export default function Hero() {
             <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-10"
             >
                 <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center pt-2">
                     <motion.div
